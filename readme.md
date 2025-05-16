@@ -53,8 +53,43 @@ The pipeline can be configured through the `config/` directory and `.env` file:
 
 ## Data Flow
 
-1. **Extract**: Data is extracted from various sources (APIs, files, etc.)
+1. **Extract**: Data is extracted from REST API.
 2. **Transform**: Raw data is cleaned, normalized, and enriched
 3. **Load**: Processed data is loaded into the database
 4. **Analyze**: SQL queries can be run to analyze the stored data
+
+## Data Relationship Layout
+Below is the data relationship layout diagram (RDL) showing the structure of the database and relationships between tables:
+![Data Relationship Layout](artifacts/rdl.png)
+*This diagram shows how the country data entities are related to each other in the database schema.*
+
+
+### Table Details
+
+#### Country Table
+- **id**: Serial primary key
+- **cca2**: ISO 3166-1 alpha-2 country code (varchar(3), NOT NULL)
+- **name**: Official country name (varchar(255), NOT NULL)
+- **capital**: Capital city (varchar(255))
+- **region**: Geographic region (varchar(255))
+- **subregion**: More specific geographic region (varchar(255))
+- **population**: Total population (bigint)
+- **area**: Land area in square kilometers (decimal)
+
+#### Currency Table
+- **id**: Serial primary key
+- **code**: ISO 4217 currency code (varchar, NOT NULL)
+- **name**: Currency name (varchar, NOT NULL)
+- **symbol**: Currency symbol (varchar)
+
+#### Language Table
+- **id**: Serial primary key
+- **code**: ISO 639 language code (varchar, NOT NULL)
+- **name**: Language name (varchar, NOT NULL)
+
+#### Junction Tables
+- **country_currency**: Links countries to their currencies (Many-to-Many)
+- **country_language**: Links countries to their languages (Many-to-Many)
+
+For more detailed information about the database schema, see the `SQL/DB_Schema.sql` file.
 
