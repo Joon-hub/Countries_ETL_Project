@@ -1,6 +1,6 @@
 # Countries ETL Project
 
-A comprehensive ETL (Extract, Transform, Load) pipeline for collecting, processing, and storing countries data from REST API.
+A comprehensive ETL (Extract, Transform, Load) pipeline for collecting, processing, and storing countries data from REST API (website: https://restcountries.com , API: https://restcountries.com/v3.1/all ).
 
 ## Overview
 
@@ -34,7 +34,7 @@ Countries_ETL_Project/
 └── readme.md            
 ```
 
-## ✨ Features
+## Features
 
 - **Data Extraction**: Fetch countries data from REST APIs using `etl/extract.py`
 - **Data Transformation**: Clean, normalize, and enrich raw data with `etl/transform.py`
