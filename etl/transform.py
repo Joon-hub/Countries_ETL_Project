@@ -22,8 +22,7 @@ def transform_country_data(raw_data):
             continue
 
         name = country.get('name', {}).get('common')
-        capital_list = country.get('capital', [])
-        capital = capital_list[0] if capital_list else None # Take the first capital if available
+        capital = country.get('capital', [None])[0] # Take the first capital if available
         region = country.get('region')
         subregion = country.get('subregion')
         population = country.get('population')
