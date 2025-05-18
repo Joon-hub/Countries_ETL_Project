@@ -1,3 +1,4 @@
 .env
 artifacts/notes.md
 artifacts/pipenv_notes.md
+artifacts/practice_notebook.ipynb
