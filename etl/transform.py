@@ -16,7 +16,6 @@ def transform_country_data(raw_data):
     }
 
     for country in raw_data:
-        # Extract core country data 
         cca2 = country['cca2']
         if not cca2: # skip contries without a valid cca2 code
             logging.warning(f"Skipping country with missing cca2: {country.get('name', {}).get('common', 'Unknown')}")
@@ -41,10 +40,8 @@ def transform_country_data(raw_data):
         })
 
         # Process currencies 
-        # columns in currencies are code, name, symbol
         currencies = country.get('currencies', {})
         for code, details in currencies.items():
-            # Corrected: Use the loop key as the code
             currency_name = details.get('name')
             currency_symbol = details.get('symbol')
 

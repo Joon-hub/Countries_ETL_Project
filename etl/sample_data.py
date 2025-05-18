@@ -13,7 +13,6 @@ def fetch_all_countries_data(url):
     """
     print("Attempting to fetch data from: {url}")
     try:
-        # get request
         response = requests.get(url)
         data = response.json()
         return data
@@ -27,19 +26,12 @@ def fetch_all_countries_data(url):
 
 if __name__ == "__main__":
     country_data = fetch_all_countries_data(API_URL)
-    
     if country_data:
         print('length of data: ', len(country_data))
-
         if country_data:
-            # print the structure of first country object for exploartion
             print("\n --- structure of first country object ---")
-
-            # Using json dumps for pretty printing
             print(json.dumps(country_data[0], indent=4))
-
             print("\n--- End of structure of first country object ---")
-
         else:
             print(" fetched data is empty. ")
     else:
