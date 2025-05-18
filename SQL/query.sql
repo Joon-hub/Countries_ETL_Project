@@ -22,3 +22,17 @@ JOIN
     country c ON cc.country_id = c.id
 WHERE
     c.region = 'Europe';
+
+-- Query 3: Count the countries which uses multiple currencies.
+
+SELECT
+    c.name, c.region,
+    COUNT(*) as no_of_currencies
+FROM
+    country c
+JOIN
+    country_currency cc ON c.id = cc.country_id
+GROUP BY
+    c.id
+HAVING
+    COUNT(*) > 1;
