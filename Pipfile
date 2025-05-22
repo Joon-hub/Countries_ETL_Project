@@ -6,7 +6,11 @@ name = "pypi"
 [packages]
 dotenv = "*"
 psycopg2 = "*"
+pytest = "*"
+psycopg2-binary = "*"
 requests = "*"
+pandas = "*"
+requests-mock = "*"
 
 [dev-packages]
 ipykernel = "*"
