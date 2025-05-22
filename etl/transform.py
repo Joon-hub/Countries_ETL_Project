@@ -16,8 +16,9 @@ def transform_country_data(raw_data):
     }
 
     for country in raw_data:
-        cca2 = country['cca2']
-        if not cca2: # skip contries without a valid cca2 code
+        # Safely get cca2 with a default of None
+        cca2 = country.get('cca2')
+        if not cca2: # skip countries without a valid cca2 code
             logging.warning(f"Skipping country with missing cca2: {country.get('name', {}).get('common', 'Unknown')}")
             continue
 

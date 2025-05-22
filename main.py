@@ -7,6 +7,7 @@ try:
 
     from Database.connection import get_db_connection
     from Database.load import insert_data_to_db
+    from Database.init_db import init_database
 
     from config.settings import API_URL
 
@@ -24,11 +25,16 @@ if __name__ == "__main__":
         # 2. Transform data
         transformed_data = transform_country_data(raw_country_data)
 
-        # 3. Get database connection
+        # 3. Initialize database (create tables if they don't exist)
+        if not init_database():
+            logging.error("Failed to initialize database. ETL process aborted.")
+            exit(1)
+
+        # 4. Get database connection
         db_connection = get_db_connection()
 
         if db_connection:
-            # 4. Insert data into the database
+            # 5. Insert data into the database
             insert_data_to_db(db_connection, transformed_data)
 
             # Close the database connection
